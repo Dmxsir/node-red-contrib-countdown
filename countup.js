@@ -101,7 +101,7 @@ module.exports = function(RED) {
                     timeout = Math.ceil(msg.payload);
 
                     if (ticker) {
-                        // countdown is running
+                        // countup is running
                         if (node.config.setTimeToNewWhileRunning) {
                             ticks = msg.payload;
                             node.status({
@@ -109,8 +109,8 @@ module.exports = function(RED) {
                             });
                         }
                     } else {
-                        // countdown is stopped
-                        if (node.config.startCountdownOnControlMessage) {
+                        // countup is stopped
+                        if (node.config.startCountupOnControlMessage) {
                             startTimer();
                         } else {
                             node.status({
@@ -144,5 +144,5 @@ module.exports = function(RED) {
             }
         });
     }
-    RED.nodes.registerType("countdown", countdown);
+    RED.nodes.registerType("countup", countup);
 }
