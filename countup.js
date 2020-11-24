@@ -3,7 +3,7 @@ module.exports = function(RED) {
 
     const isNumber = require('is-number');
 
-    function countdown(config) {
+    function countup(config) {
         RED.nodes.createNode(this, config);
         var node = this;
         node.config = config;
