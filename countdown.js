@@ -10,7 +10,7 @@ module.exports = function(RED) {
 
         // Local variables
         var ticker = null;
-        var ticks = -1;
+        var ticks = +1;
         var timeout = parseInt(node.config.timer);
 
         this.status({ fill: "red", shape: "dot", text: "Stopped: " + timeout });
