@@ -1,8 +1,8 @@
-# node-red-contrib-countdown
-`node-red-contrib-countdown` is a simple countdown node.  
-It starts a **countdown timer** on a received input `msg` and decreases the counter value (at the first output) until the countdown timer elapses. The countdown can be **stopped at any time**. Also the countdown timer can be set to any new countdown value at any time to **reload the timer** with a specific value.
+# node-red-contrib-countup
+`node-red-contrib-countdup` is a simple countup node.  
+It starts a **countup timer** on a received input `msg` and decreases the counter value (at the first output) until the countup timer elapses. The countup can be **stopped at any time**. Also the countup timer can be set to any new countup value at any time to **reload the timer** with a specific value.
 
-The output can **emit a `msg`** at its first output with an arbitrary `msg.payload` contents at the **start** of the timer as well as at the **stop** of the countdown timer.   
+The output can **emit a `msg`** at its first output with an arbitrary `msg.payload` contents at the **start** of the timer as well as at the **stop** of the countup timer.   
 At the **second Output** the node emits the remaining counter value every second.
 
 The node's output `msg` can optionally contain an arbitrary topic string.
@@ -18,12 +18,12 @@ Loosely based on prior work by Neil Cherry: https://github.com/linuxha/node-red-
 
 <a name="installation_in_node-red"></a>
 ### In Node-RED (preferred)
-* Via Manage Palette -> Search for "node-red-contrib-countdown"
+* Via Manage Palette -> Search for "node-red-contrib-countup"
 
 <a name="installation_in_a_shell"></a>
 ### In a shell
 * go to the Node-RED installation folder, e.g.: `~/.node-red`
-* run `npm install node-red-contrib-countdown`
+* run `npm install node-red-contrib-countup`
 
 <a name="usage"></a>
 ## Usage
@@ -35,8 +35,8 @@ Loosely based on prior work by Neil Cherry: https://github.com/linuxha/node-red-
 **Fig. 2:** Node properties
 
 
-#### Countdown (secs) property
-Set the ***Countdown*** value to the desired countdown time in seconds. The timer will start with this countdown value to decrease the timer value (countdown start value).
+#### Countup (secs) property
+Set the ***Countup*** value to the desired countup time in seconds. The timer will start with this countup value to decrease the timer value (countup start value).
 
 #### Topic
 The ***Topic*** can be set to any string value. This string is added to the output `msg` as an additional element `msg.topic`.  
@@ -50,7 +50,7 @@ In both cases, also nothing to be emitted may be chosen.
 
 #### Flags
 You can configure the timer to
-- **restart** (reload) the timer to its countdown start value during the count down whenever a `msg` is received at the node's input.
+- **restart** (reload) the timer to its countup start value during the count down whenever a `msg` is received at the node's input.
 - activate the ability to **set the timer value** to an arbitrary value during the count down with the use of a control `msg`.
 - **start the timer** with a control `msg` (i.e. a `msg` with a *control* topic string).
 
@@ -60,13 +60,13 @@ You can configure the timer to
 The node evaluates the following input `msg` types:
 - Input `msg` with a `msg.payload` contents of false (boolean) or '0' (number).  
   This `msg` type stops resp. finishes the timer. The *Timer Off payload* is emitted also in this case.
-- Input `msg` with a `msg.topic` set to "control" and a `msg.payload` set to an arbitrary number value. This reloads the timer with the desired `msg.payload` value immediately and works at a running countdown as well as a non startet or elapsed countdown timer.  
+- Input `msg` with a `msg.topic` set to "control" and a `msg.payload` set to an arbitrary number value. This reloads the timer with the desired `msg.payload` value immediately and works at a running countup as well as a non startet or elapsed countup timer.  
 - All other input `msg` do start/restart the timer if it is stopped.
 
 
 ## Outputs
 The node contains two outputs:
-- The **primary output** (upper output) emits an output `msg` at the **countdown start/stop** instant of time.  These `msg.payload` contents are configurable
+- The **primary output** (upper output) emits an output `msg` at the **countup start/stop** instant of time.  These `msg.payload` contents are configurable
 - The **secondary output** (lower output) emits the **remaining time every second** during the timer runs. The `msg.payload` holds the remaining counting value
 
 
@@ -86,11 +86,11 @@ Just activate the inject and look at the output debug node status messages.
 
 ### Sending messages and retriggering
 This example shows how to
-- handle messages at the start and the end of the countdown
+- handle messages at the start and the end of the countup
 - retrigger the timer during it runs
 
-Text messages are output on the first output at start and end of the countdown.  
-You can restart the timer by activating the inject node during the countdown runs.
+Text messages are output on the first output at start and end of the countup.  
+You can restart the timer by activating the inject node during the countupown runs.
 
 ![Alt text](images/flow-retrigger-and-messages.png?raw=true "Sending messages and retrigger flow")  
 [**messages and retriggering flow**](examples/FlowRetriggerAndMessages.json)  
@@ -98,8 +98,8 @@ You can restart the timer by activating the inject node during the countdown run
 
 
 
-### Stopping the countdown timer
-This example shows the two options to stop the countdown timer.
+### Stopping the countup timer
+This example shows the two options to stop the countup timer.
 
 ![Alt text](images/flow-stop.png?raw=true "Stopping timer flow")  
 [**stopping timer flow**](examples/FlowStop.json)  
@@ -107,8 +107,8 @@ This example shows the two options to stop the countdown timer.
 
 
 
-### Reloading the countdown timer
-This example shows the functionality of reloading the countdown value during a running timer.
+### Reloading the countup timer
+This example shows the functionality of reloading the countup value during a running timer.
 
 
 ![Alt text](images/flow-reload.png?raw=true "Reloading timer flow")  
